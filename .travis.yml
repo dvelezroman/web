@@ -1,5 +1,7 @@
 sudo: required
-language: generic
+language: node_js
+node_js:
+  - stable
 
 services:
   - docker
@@ -8,15 +10,17 @@ before_install:
   - docker build -t dvelez/web -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true dvelez/web npm run test
+  - docker run -e CI=true dvelez/web npm run test -- --coverage
+
+before_deploy: "echo 'ready?'"
 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "web"
-  env: "Web-env-1"
+  app: "new-web"
+  env: "new-web-env"
   bucket_name: "elasticbeanstalk-us-east-1-070071872053"
-  bucket_path: "web"
+  bucket_path: "new-web"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
