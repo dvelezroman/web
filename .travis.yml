@@ -16,7 +16,7 @@ deploy:
   app: "web"
   env: "Web-env-1"
   bucket_name: "elasticbeanstalk-us-east-1-070071872053"
-  bucket_path: "docker"
+  bucket_path: "web"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
