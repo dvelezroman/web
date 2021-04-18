@@ -1,0 +1,5 @@
+{
+    "travis.repository": "web",
+    "travis.username": "dvelezroman",
+    "travis.statusPolling": false
+}
